@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KU — 空 | Synchronized Institutional Disconnection Platform</title>
+  <meta name="description" content="KU is an institutional AI platform solving the structural impossibility of individual disconnection in academic environments.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Sky Background Effects -->
+  <div class="sky-bg"></div>
+
+  <!-- Gateway Screen (Zen Gateway) -->
+  <div id="gatewayScreen" class="gateway-overlay">
+    <div class="enso-container">
+      <svg class="enso-svg" viewBox="0 0 160 160">
+        <defs>
+          <linearGradient id="ensoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#6366f1" stop-opacity="0.8" />
+            <stop offset="50%" stop-color="#0ea5e9" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#10b981" stop-opacity="0.5" />
+          </linearGradient>
+        </defs>
+        <circle class="enso-circle" cx="80" cy="80" r="70" />
+      </svg>
+      <div class="enso-text">空</div>
+    </div>
+    <h2 class="gateway-title">KU — 空</h2>
+    <p class="gateway-subtitle">A Collective AI Platform for Synchronized Institutional Disconnection</p>
+    <button class="gateway-btn" onclick="enterPlatform()">ENTER THE SILENCE</button>
+  </div>
+
+  <!-- Main System App -->
+  <div class="app-container">
+    
+    <!-- Top System Header -->
+    <header class="app-header">
+      <div class="logo-section">
+        <h1>KU — 空</h1>
+        <span class="logo-japanese">空</span>
+        <span style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px;">TSUNAGARANAI KACHI</span>
+      </div>
+      <div class="header-status-badge">
+        <span id="systemStatusDot" class="status-dot active"></span>
+        <span id="systemStatusText" style="font-weight: 600;">Standard Connectivity</span>
+      </div>
+    </header>
+
+    <!-- App Body Workspace -->
+    <main class="workspace-grid">
+      
+      <!-- Left Column: Collective Synchronization Engine (Admin View) -->
+      <section class="admin-portal">
+        
+        <!-- Live Countdown Banner -->
+        <div class="sync-countdown-banner glass-panel">
+          <div class="sync-countdown-text">
+            <span style="font-size: 1.25rem;">⏳</span>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 500;">NEXT SCHEDULED DISCONNECTION WINDOW</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Institutional synchronization will hold LMS notifications and queue emails automatically.</div>
+            </div>
+          </div>
+          <div class="countdown-timer-span" id="nextWindowTimer">01h 14m 05s</div>
+        </div>
+
+        <!-- Sync Control Board -->
+        <div class="sync-control-panel glass-panel">
+          <div class="panel-info">
+            <h2>Synchronization Control Center</h2>
+            <p>Calculate optimal windows or trigger manual emergency pauses. Current mode: <span id="syncModePill" class="pill-info" style="background: rgba(16, 185, 129, 0.1); color: var(--color-accent);">Automated Scheduling</span></p>
+          </div>
+          <button id="btnTriggerSync" class="btn-trigger-window" onclick="toggleSynchronizedWindow()">
+            <span id="btnSyncIcon">🧘</span>
+            <span id="btnSyncText">Simulate KU Window</span>
+          </button>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="stats-grid">
+          
+          <div class="stat-card glass-panel">
+            <div class="stat-label">
+              <span>Avg Cognitive Depth Gain</span>
+              <span class="info-icon" title="Average increase in student performance scores following scheduled windows.">?</span>
+            </div>
+            <div class="stat-value">+61%</div>
+            <div class="stat-trend trend-up">
+              <span>▲</span> 8.4% this semester
+            </div>
+          </div>
+
+          <div class="stat-card glass-panel">
+            <div class="stat-label">
+              <span>Faculty Burnout Resignations</span>
+              <span class="info-icon" title="Percentage of faculty indicating intention to stay compared to previous academic year.">?</span>
+            </div>
+            <div class="stat-value">-42%</div>
+            <div class="stat-trend trend-up">
+              <span>▼</span> 12.1% drop in burnout reports
+            </div>
+          </div>
+
+          <div class="stat-card glass-panel">
+            <div class="stat-label">
+              <span>Anxiety Counseling Demand</span>
+              <span class="info-icon" title="Weekly student health counseling cases related to digital stress.">?</span>
+            </div>
+            <div class="stat-value">-24%</div>
+            <div class="stat-trend trend-up">
+              <span>▼</span> 3.2% drop since adoption
+            </div>
+          </div>
+
+          <div class="stat-card glass-panel">
+            <div class="stat-label">
+              <span>LMS Notifications Held</span>
+              <span class="info-icon" title="Total number of non-urgent notifications queued during active windows.">?</span>
+            </div>
+            <div class="stat-value" id="statsNotifHeld">1,402</div>
+            <div class="stat-trend trend-neutral">
+              <span id="statsNotifQueuedRate">0 held currently</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- AI Window Optimizer Graph -->
+        <div class="optimizer-card glass-panel">
+          <div class="card-header">
+            <h3>📈 AI Window Optimizer <span class="pill-info">Real-time LMS Ecosystem Data</span></h3>
+            <span style="font-size: 0.75rem; color: var(--text-secondary);">Shaded zones denote optimal synchronized offline periods.</span>
+          </div>
+          
+          <div class="chart-container">
+            <svg class="chart-svg" id="optimizationChart" viewBox="0 0 760 220">
+              <!-- Grid lines will be drawn here dynamically by app.js -->
+            </svg>
+            <div id="chartTooltip" class="chart-tooltip"></div>
+          </div>
+        </div>
+
+        <!-- Calendar Board -->
+        <div class="calendar-card glass-panel">
+          <div class="card-header">
+            <h3>📅 Public Window Calendar <span class="pill-info">Semester Schedule</span></h3>
+            <span style="font-size: 0.75rem; color: var(--text-secondary);">3 weekly windows published in advance to align expectations.</span>
+          </div>
+          
+          <div class="calendar-week" id="calendarWeekGrid">
+            <!-- Filled dynamically by app.js -->
+          </div>
+        </div>
+
+        <!-- Policy Settings and Integrations -->
+        <div class="policy-grid">
+          
+          <div class="policy-card glass-panel">
+            <h3>⚙️ LMS Integration Policies</h3>
+            <div class="policy-list">
+              <div class="policy-item">
+                <div class="policy-label">
+                  <span>IMS LTI Standard Connection</span>
+                  <span class="policy-sub">Canvas, Moodle, Blackboard API hooks</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked disabled>
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="policy-item">
+                <div class="policy-label">
+                  <span>Deadline Clocks Suspension</span>
+                  <span class="policy-sub">No assignment penalties during windows</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="policyDeadlineSuspend" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="policy-item">
+                <div class="policy-label">
+                  <span>Queued notification releases</span>
+                  <span class="policy-sub">Release all notifications at window end</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked disabled>
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="policy-card glass-panel">
+            <h3>🛡️ Network influence & Email</h3>
+            <div class="policy-list">
+              <div class="policy-item">
+                <div class="policy-label">
+                  <span>Microsoft & Gmail API delivery queues</span>
+                  <span class="policy-sub">Holds outbound institutional mail</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="policyEmailHold" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="policy-item">
+                <div class="policy-label">
+                  <span>QoS Network Deprioritization</span>
+                  <span class="policy-sub">Degrades social media on campus WiFi</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="policyQoS" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="policy-item">
+                <div class="policy-label">
+                  <span>Professor Auto-Reply Shield</span>
+                  <span class="policy-sub">Replies message will wait until window end</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="policyAutoReply" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Right Column: Cognitive Recovery Engine (Mobile Simulator) -->
+      <section class="phone-simulator-column">
+        <div class="phone-bezel">
+          <!-- Notch -->
+          <div class="phone-notch">
+            <div class="notch-camera"></div>
+            <div class="notch-speaker"></div>
+          </div>
+
+          <div class="phone-screen">
+            <!-- Status Bar -->
+            <div class="phone-status-bar">
+              <span id="phoneTime">08:00 PM</span>
+              <div class="status-right">
+                <span id="phoneFocusIcon" style="display:none; color: var(--color-secondary);">🌙</span>
+                <span>📶</span>
+                <span>🔋 92%</span>
+              </div>
+            </div>
+
+            <!-- Focus Mode Active Screen Overlay -->
+            <div id="focusModeScreen" class="focus-mode-screen">
+              <div class="focus-header">
+                <span class="focus-badge">KU Window Active</span>
+                <h3 class="focus-title" id="focusActivityTitle">Analog Recovery</h3>
+                <p class="focus-subtitle" id="focusActivitySub">Focus Mode initiated by OS-level API integration.</p>
+              </div>
+
+              <div class="focus-breather-container">
+                <div class="focus-breather-circle breathing" id="breatherCircle">
+                  <div class="breather-inner" id="breatherText">Inhale</div>
+                </div>
+              </div>
+
+              <div>
+                <div class="focus-timer" id="focusTimerDisplay">20:00</div>
+                <div class="focus-presc-details" id="focusActivityDesc">Slow reading of an analog text or book from course material. No screen backlight.</div>
+              </div>
+
+              <div class="focus-footer">
+                <div class="sound-toggle" onclick="toggleAmbientSound()">
+                  <span id="soundStatusEmoji">🔊</span>
+                  <span id="soundStatusText">Calming Drone Sound</span>
+                </div>
+                <button class="btn-bypass" onclick="emergencyBypass()">EMERGENCY BYPASS</button>
+              </div>
+            </div>
+
+            <!-- Phone Body Content -->
+            <div class="phone-content">
+              
+              <!-- Persona Tab Toggles -->
+              <div class="persona-selector">
+                <button id="tabStudent" class="persona-tab active" onclick="switchPhonePersona('student')">Maria (Student)</button>
+                <button id="tabFaculty" class="persona-tab" onclick="switchPhonePersona('faculty')">Mr. Santos (Faculty)</button>
+              </div>
+
+              <!-- Persona View 1: Maria (Student) -->
+              <div id="viewStudent" class="phone-view active">
+                <div class="profile-card">
+                  <div class="profile-avatar">M</div>
+                  <div class="profile-info">
+                    <h4>Maria, 19</h4>
+                    <p>First Year student, Science & Tech</p>
+                  </div>
+                </div>
+
+                <!-- Cognitive Depth Score Circle -->
+                <div class="cog-meter-box">
+                  <div class="cog-circle-container">
+                    <svg class="cog-svg" viewBox="0 0 160 160">
+                      <defs>
+                        <linearGradient id="cogGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#ef4444" />
+                          <stop offset="50%" stop-color="#f59e0b" />
+                          <stop offset="100%" stop-color="#10b981" />
+                        </linearGradient>
+                      </defs>
+                      <circle class="cog-circle-bg" cx="80" cy="80" r="70" />
+                      <circle id="cogScoreCircle" class="cog-circle-val" cx="80" cy="80" r="70" />
+                    </svg>
+                    <div class="cog-center-text">
+                      <span id="cogScoreVal" class="cog-value">34%</span>
+                      <span class="cog-lbl">COGNITIVE</span>
+                    </div>
+                  </div>
+                  <div id="cogScoreStatus" class="cog-status-desc depleted">
+                    Capacity: <span>Drained</span>
+                  </div>
+                </div>
+
+                <!-- Recovery Prescriptions -->
+                <div class="prescriptions-section">
+                  <div class="section-title-small">AI Prescribed Recoveries</div>
+                  
+                  <div class="prescription-card" onclick="startGuidedRecovery('Analog Slow Reading', '20:00', 'Read a physical book or analog article from your course reading list. No screen backlight.', '📚')">
+                    <div class="presc-left">
+                      <div class="presc-icon">📚</div>
+                      <div class="presc-details">
+                        <h5>Analog Slow Reading</h5>
+                        <p>Restores complex analytical focus</p>
+                      </div>
+                    </div>
+                    <span class="presc-duration">20m</span>
+                  </div>
+
+                  <div class="prescription-card" onclick="startGuidedRecovery('Structured Silence', '15:00', 'Quiet sitting with attention on physical breathing cycle. No audio inputs.', '🧘')">
+                    <div class="presc-left">
+                      <div class="presc-icon">🧘</div>
+                      <div class="presc-details">
+                        <h5>Structured Silence</h5>
+                        <p>Reduces auditory connectivity load</p>
+                      </div>
+                    </div>
+                    <span class="presc-duration">15m</span>
+                  </div>
+
+                  <div class="prescription-card" onclick="startGuidedRecovery('Physical Movement', '30:00', 'Brisk walking or physical stretch without headphones or electronic devices.', '🏃')">
+                    <div class="presc-left">
+                      <div class="presc-icon">🏃</div>
+                      <div class="presc-details">
+                        <h5>Physical Movement</h5>
+                        <p>Restores sensorimotor loops</p>
+                      </div>
+                    </div>
+                    <span class="presc-duration">30m</span>
+                  </div>
+                </div>
+
+                <!-- Sub Apps / Tools Links -->
+                <div class="section-title-small">Protected Workarounds</div>
+                <div class="sub-app-grid">
+                  <button class="sub-app-btn" onclick="openPhoneOverlay('overlayContacts')">
+                    <span class="emoji">🚨</span>
+                    <h6>Emergency Bypass</h6>
+                    <p>Allow calls from specific people</p>
+                  </button>
+                  <button class="sub-app-btn" onclick="openPhoneOverlay('overlayCoordination')">
+                    <span class="emoji">📌</span>
+                    <h6>Coordination Pinboard</h6>
+                    <p>Notes for group before windows</p>
+                  </button>
+                  <button class="sub-app-btn" style="grid-column: span 2;" onclick="openPhoneOverlay('overlayAccommodation')">
+                    <span class="emoji">📝</span>
+                    <h6>Disconnection Accommodation</h6>
+                    <p>Apply for modified scheduled windows</p>
+                  </button>
+                </div>
+
+                <!-- LMS/Social notifications area -->
+                <div class="simulator-notifications">
+                  <div class="section-title-small" style="display:flex; justify-content:space-between;">
+                    <span>Notification Feed</span>
+                    <span id="notifStatusText" style="color:var(--color-primary); font-weight:600;">Standard</span>
+                  </div>
+                  <div id="phoneNotificationFeed">
+                    <!-- Notifications pop up or queued here -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Persona View 2: Mr. Santos (Faculty) -->
+              <div id="viewFaculty" class="phone-view">
+                <div class="profile-card">
+                  <div class="profile-avatar prof-avatar">S</div>
+                  <div class="profile-info">
+                    <h4>Mr. Santos, 38</h4>
+                    <p>Associate Professor, Engineering</p>
+                  </div>
+                </div>
+
+                <!-- Shield Card -->
+                <div class="prof-shield-card">
+                  <div class="shield-header">
+                    <div class="shield-title">🛡️ Faculty Boundary Shield</div>
+                    <span class="shield-badge" id="facultyShieldBadge">Active</span>
+                  </div>
+                  <p class="shield-desc">Suppresses student messaging alerts during protected windows. The university policies defend your boundaries automatically.</p>
+                  
+                  <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 4px;">AUTOMATED WINDOW REPLY TEMPLATE</div>
+                  <div class="auto-reply-box" id="autoReplyPreview">
+                    "Hello. Santos is currently in a scheduled KU offline window. Your message is placed in queue and will be delivered when the window concludes at 9:00 PM."
+                  </div>
+                </div>
+
+                <div class="section-title-small">Burnout Risk Analytics</div>
+                <div class="cog-meter-box" style="padding: 1rem; align-items: stretch; gap: 0.75rem;">
+                  <div class="stats-bar-group">
+                    <div class="stats-bar-item">
+                      <span>Faculty Burnout Index</span>
+                      <span style="font-weight: 700; color: var(--color-accent);">Low (-42% YTD)</span>
+                    </div>
+                    <div class="stats-bar-bg">
+                      <div class="stats-bar-fill" style="width: 24%; background: var(--color-accent);"></div>
+                    </div>
+                  </div>
+
+                  <div class="stats-bar-group">
+                    <div class="stats-bar-item">
+                      <span>Average Weekly Work Hours</span>
+                      <span style="font-weight: 700; color: var(--color-secondary);">44.5 Hours</span>
+                    </div>
+                    <div class="stats-bar-bg">
+                      <div class="stats-bar-fill" style="width: 55%; background: var(--color-secondary);"></div>
+                    </div>
+                  </div>
+
+                  <div class="stats-bar-group">
+                    <div class="stats-bar-item">
+                      <span>Accreditation Welfare Compliance</span>
+                      <span style="font-weight: 700; color: var(--color-accent);">98% Compliant</span>
+                    </div>
+                    <div class="stats-bar-bg">
+                      <div class="stats-bar-fill" style="width: 98%; background: var(--color-accent);"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="section-title-small">Shielded Message History</div>
+                <div class="simulator-notifications" style="border-top: none; padding-top: 0; margin-top: 0.25rem;">
+                  <div class="mock-notification">
+                    <div class="notif-app-icon lms">L</div>
+                    <div class="notif-body">
+                      <div class="notif-title">
+                        <span>Canvas Student (Q&A)</span>
+                        <span class="notif-time">Queued</span>
+                      </div>
+                      <div class="notif-text">"Is Problem 4 in the homework graded on a curve?"</div>
+                    </div>
+                  </div>
+                  <div class="mock-notification">
+                    <div class="notif-app-icon email">E</div>
+                    <div class="notif-body">
+                      <div class="notif-title">
+                        <span>Department Chair</span>
+                        <span class="notif-time">Queued</span>
+                      </div>
+                      <div class="notif-text">"Draft curriculum review requirements for next Friday."</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Sub App Overlays inside Simulator -->
+            <!-- Emergency Contacts -->
+            <div id="overlayContacts" class="phone-overlay">
+              <div class="overlay-header">
+                <span class="overlay-title">🚨 Registered Emergency Bypass</span>
+                <button class="btn-close-overlay" onclick="closePhoneOverlay('overlayContacts')">×</button>
+              </div>
+              <p style="font-size: 0.72rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                Contacts added here bypass all offline filters. Notifications from these individuals deliver instantly. The university cannot see this list.
+              </p>
+              <div class="contacts-list" id="emergencyContactsList">
+                <!-- Populated dynamically -->
+              </div>
+              <div class="form-group">
+                <label>Contact Name</label>
+                <input type="text" id="contactNameInput" placeholder="e.g. Mom, Dr. Evans">
+              </div>
+              <div class="form-group">
+                <label>Relationship / Type</label>
+                <select id="contactTypeSelect">
+                  <option value="Family">Family</option>
+                  <option value="Medical">Medical Provider</option>
+                  <option value="Support">Designated Support</option>
+                </select>
+              </div>
+              <button class="btn-small" onclick="addEmergencyContact()">Add Bypass Contact</button>
+            </div>
+
+            <!-- Coordination Pinboard -->
+            <div id="overlayCoordination" class="phone-overlay">
+              <div class="overlay-header">
+                <span class="overlay-title">📌 Group Coordination Pinboard</span>
+                <button class="btn-close-overlay" onclick="closePhoneOverlay('overlayCoordination')">×</button>
+              </div>
+              <p style="font-size: 0.72rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                Leave notes for your study groups. Notes are frozen during active windows and appear instantly for all members once the window closes.
+              </p>
+              <div class="coordination-notes" id="coordinationNotesGrid">
+                <!-- Notes list -->
+              </div>
+              <div class="form-group">
+                <label>Add Message Note</label>
+                <textarea id="coordinationNoteInput" placeholder="Write a pre-window note..." rows="2"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Project / Group</label>
+                <select id="coordinationGroupSelect">
+                  <option value="AI Ethics Group">AI Ethics Project</option>
+                  <option value="Chemistry Lab 3">Chemistry Lab Group</option>
+                  <option value="Calculus Study Circle">Calculus Study Circle</option>
+                </select>
+              </div>
+              <button class="btn-small" onclick="addCoordinationNote()">Post Note</button>
+            </div>
+
+            <!-- Disconnection Accommodation Protocol -->
+            <div id="overlayAccommodation" class="phone-overlay">
+              <div class="overlay-header">
+                <span class="overlay-title">📝 Disconnection Accommodation</span>
+                <button class="btn-close-overlay" onclick="closePhoneOverlay('overlayAccommodation')">×</button>
+              </div>
+              <p style="font-size: 0.72rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                Request a modified window schedule due to employment obligations, medical needs, or disability accommodations.
+              </p>
+              <div class="form-group">
+                <label>Accommodation Category</label>
+                <select id="accommodationCategory">
+                  <option value="Employment">Part-time Employment conflict</option>
+                  <option value="Medical">Medical or Caregiving requirement</option>
+                  <option value="Disability">Disability support requirement</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Proposed Schedule Modifications</label>
+                <textarea placeholder="e.g. Shift Tuesday window from 8 PM to 9 PM due to shift work..." rows="3"></textarea>
+              </div>
+              <div class="form-group" style="display:flex; flex-direction:row; align-items:center; gap:8px;">
+                <input type="checkbox" id="accommodationVerify" style="width:auto;">
+                <label for="accommodationVerify" style="font-size:0.68rem; line-height:1.2;">I certify that this request meets the university criteria.</label>
+              </div>
+              <button class="btn-small" onclick="submitAccommodation()">Submit Private Request</button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>KU — 空 Platform System Architecture • OGIS 2026 Competition Concept</p>
+      <p style="margin-top:0.25rem; font-size:0.75rem; color: var(--text-muted);">
+        Inspired by the Japanese concept of <strong>空 (Ku)</strong> — emptiness, the condition that makes everything else possible. 
+        Designed in compliance with the Right-to-Disconnect philosophies.
+      </p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
