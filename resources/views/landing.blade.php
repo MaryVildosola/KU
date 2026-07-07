@@ -101,18 +101,6 @@
             max-width: 900px;
             text-align: center;
         }
-        .badge {
-            display: inline-block;
-            background: rgba(99,102,241,0.1);
-            border: 1px solid rgba(99,102,241,0.3);
-            color: #818cf8;
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 2rem;
-        }
         .hero h2 {
             font-family: var(--font-display);
             font-size: 4.5rem;
@@ -339,7 +327,6 @@
 
     <header class="hero">
         <div class="hero-content">
-            <div class="badge">OGIS Ignite PH 2026 Winner</div>
             <h2>The Structural Impossible<br><span>Now Made Possible</span></h2>
             <p>KU (空) dissolves the social coordination barrier known as FOMO by synchronizing institutional disconnection. When the university pauses, the mind rests.</p>
 
