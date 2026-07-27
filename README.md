@@ -1,58 +1,69 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Ku (空) — KUKAI (空界)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**A Collective AI Platform for Synchronized Institutional Disconnection**
 
-## About Laravel
+KU is an academic ecosystem designed to solve the structural impossibility of disconnection in a hyperconnected university environment. Rather than putting the burden of "going offline" on the individual (which creates a Fear Of Missing Out or academic penalties), KU synchronizes the entire institution into offline windows simultaneously. When everyone enters silence together, there is nothing to miss.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Institution-Side AI Engine:** Analyzes the digital ecosystem to identify optimal weekly offline windows.
+- **Synchronized Silence:** LMS notifications are suspended, deadlines are frozen, emails are queued, and campus WiFi deprioritizes social media during active windows.
+- **Faculty Shield:** Automatically queues incoming communications during windows, protecting faculty off-hours while ensuring all students receive responses simultaneously when the window ends.
+- **FOMO Risk Diagnostics:** Admin tools to monitor the institutional pressure level (based on deadline clustering, midnight activity, etc.).
+- **Research Data Portal:** Provides anonymized datasets for researchers to study the impact of digital synchronization on student anxiety and cognitive recovery.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## User Roles & Test Accounts
 
-## Learning Laravel
+The system is pre-seeded with test accounts for each institutional role. All accounts use the password `password`.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Platform Administrator**
+   - **Email:** `admin@ku.edu`
+   - **Access:** `/admin/dashboard`
+   - **Capabilities:** Manage global offline windows, trigger the AI Simulator, review the FOMO Risk Index, and process student accommodation requests.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. **Faculty Member**
+   - **Emails:** `santos@ku.edu`, `reyes@ku.edu`
+   - **Access:** `/faculty/dashboard`
+   - **Capabilities:** Manage Faculty Shield auto-replies, view personal recovery analytics, and access the held message queue.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+3. **Institutional Researcher**
+   - **Email:** `researcher@ku.edu`
+   - **Access:** `/research/dashboard`
+   - **Capabilities:** Access anonymized datasets measuring Cognitive Recovery Index (CRI) improvements and apply for dataset access.
 
-## Agentic Development
+## Installation & Setup
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+1. **Clone the repository** (or download the source).
+2. **Install dependencies:**
+   ```bash
+   composer install
+   npm install
+   ```
+3. **Set up the environment:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+4. **Configure Database (SQLite by default):**
+   Ensure your `.env` is configured for SQLite or your preferred database. 
+5. **Run Migrations & Seed the Database:**
+   *This is required to generate the users, windows, and analytics data.*
+   ```bash
+   php artisan migrate --seed
+   ```
+6. **Start the Development Servers:**
+   ```bash
+   # In one terminal:
+   php artisan serve
 
-```bash
-composer require laravel/boost --dev
+   # In a second terminal:
+   npm run dev
+   ```
+7. **Open the Application:**
+   Navigate to `http://localhost:8000` (or your configured `APP_URL`) in your browser to view the presentation landing page, and log in to explore the different dashboards.
 
-php artisan boost:install
-```
+## Architecture
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Backend:** Laravel 11 (PHP 8.3+)
+- **Frontend:** Blade templating, TailwindCSS, Alpine.js
+- **Database:** SQLite / PostgreSQL / MySQL (configurable)
